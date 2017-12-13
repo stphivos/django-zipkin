@@ -10,6 +10,8 @@ import constants
 import defaults as settings
 
 
+ZipkinMiddlewareSuper = object
+
 if django.VERSION[0] == 1 and django.VERSION[1] < 5:
     from django.core.urlresolvers import resolve
 
@@ -19,6 +21,9 @@ if django.VERSION[0] == 1 and django.VERSION[1] < 5:
 elif django.VERSION[0] == 1 and django.VERSION[1] >= 5:
     def resolve_request(request):  # pyflakes:ignore
         return request.resolver_match
+    if django.VERSION[1] >= 10:
+        from django.utils.deprecation import MiddlewareMixin
+        ZipkinMiddlewareSuper = MiddlewareMixin
 else:
     def resolve_request(request):  # pyflakes:ignore
         return None
@@ -45,7 +50,7 @@ class ZipkinDjangoRequestParser(object):
         )
 
 
-class ZipkinMiddleware(object):
+class ZipkinMiddleware(ZipkinMiddlewareSuper):
     def __init__(self, store=None, request_parser=None, id_generator=None, api=None):
         self.store = store or default_data_store
         self.request_parser = request_parser or ZipkinDjangoRequestParser()

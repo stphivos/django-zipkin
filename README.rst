@@ -21,7 +21,7 @@ Supported versions
 **Python**: ``2.6``, ``2.7`` (the current Python Thrift release doesn't
 support Python 3)
 
-**Django**: ``1.3`` - ``1.8``
+**Django**: ``1.3`` - ``1.11``
 
 
 Getting started (demo)
@@ -241,14 +241,14 @@ Hacking
 -------
 
 See
-`CONTRIBUTING.md <https://github.com/prezi/django-zipkin/blob/master/CONTRIBUTING.md>`_
+`CONTRIBUTING.md <https://github.com/stphivos/django-zipkin/blob/master/CONTRIBUTING.md>`_
 for guidelines.
 
 You can start hacking on ``django-zipkin`` with:
 
 .. code:: sh
 
-    git clone https://github.com/prezi/django-zipkin.git
+    git clone https://github.com/stphivos/django-zipkin.git
     cd django-zipkin
     git remote rename origin upstream
     virtualenv virtualenv
@@ -256,5 +256,5 @@ You can start hacking on ``django-zipkin`` with:
     pip install django
     python setup.py test
 
-.. |Build Status| image:: https://travis-ci.org/prezi/django-zipkin.svg?branch=master
-   :target: https://travis-ci.org/prezi/django-zipkin
+.. |Build Status| image:: https://travis-ci.org/stphivos/django-zipkin.svg?branch=master
+   :target: https://travis-ci.org/stphivos/django-zipkin

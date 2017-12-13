@@ -14,7 +14,7 @@ def run_tests():
                 'TEST_NAME': ':memory:',
                 },
             },
-        MIDDLEWARE_CLASSES=global_settings.MIDDLEWARE_CLASSES + (
+        MIDDLEWARE_CLASSES=tuple(global_settings.MIDDLEWARE_CLASSES) + (
             'django_zipkin.middleware.ZipkinMiddleware',),
         )
     if hasattr(django, 'setup'):

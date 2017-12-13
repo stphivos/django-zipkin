@@ -26,7 +26,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    install_requires=['thrift >= 0.9.1'],
+    install_requires=['thrift >= 0.9.1,<0.10'],
     tests_require=['mock >= 1.0', 'unittest2 >= 0.5.1'],
     extras_require={
         'configglue_support': ['configglue']

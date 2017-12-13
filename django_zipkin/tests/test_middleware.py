@@ -63,12 +63,12 @@ class ZipkinMiddlewareTestCase(TestCase):
         uri = '/foo/bar?x=y'
         request = self.request_factory.get(uri, HTTP_X_B3_SAMPLED='true')
         self.middleware.process_request(request)
-        self.api.record_key_value.assert_has_calls(call('http.uri', uri))
+        self.api.record_key_value.assert_has_calls([call('http.uri', uri)])
 
     def test_annotates_responsecode(self):
         self.store.get.return_value = ZipkinData()
-        self.middleware.process_response(self.request_factory.get('/', HTTP_X_B3_SAMPLED='true'), HttpResponse(status=42))
-        self.api.record_key_value.assert_has_calls(call('http.statuscode', 42))
+        self.middleware.process_response(self.request_factory.get('/', HTTP_X_B3_SAMPLED='true'), HttpResponse(status=420))
+        self.api.record_key_value.assert_has_calls([call('http.statuscode', 420)])
 
     def test_annotates_view_name_and_arguments_of_view_function(self):
         request, view, args, kwargs = Mock(), Mock(spec=types.FunctionType), (1, 2), {'kw': 'arg'}
